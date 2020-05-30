@@ -1,0 +1,3 @@
+﻿  AdminMenu.cpp
+F:\New kursa4\SP Client\SAIPIS CP1\AdminMenu.cpp(888,25): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  SAIPIS CP1.vcxproj -> F:\New kursa4\SP Client\Debug\SAIPIS CP1.exe

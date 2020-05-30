@@ -12,6 +12,15 @@ public:
 		name = surname = "";
 		targetRaiting1 = targetRaiting2 = targetRaiting3 = targetRaiting4 = targetRaiting5 = 0;
 	}
+	void setSurname();
+	void setName();
+	void setDepartmentName();
+	void setPersonPosition();
+	void setTargetRaiting1();
+	void setTargetRaiting2();
+	void setTargetRaiting3();
+	void setTargetRaiting4();
+	void setTargetRaiting5();
 	string getSurname();
 	string getName();
 	int getTargetRaiting2();
@@ -23,4 +32,5 @@ public:
 	friend istream& operator >> (istream & stream, Employee&worker);
 	friend ostream& operator << (ostream & stream, Employee&worker);
 	friend ostream& operator << (fstream & stream, Employee&worker);
+	friend ostream& operator << (ofstream& stream, Employee&worker);
 };

@@ -66,6 +66,126 @@ istream & operator>>(istream & stream, Employee & worker)
 	return stream;
 }
 
+void Employee::setSurname()
+{
+	int count = 1;
+	while (1) {
+		cout << "Фамилия: " << endl;
+		if (count == 1) {
+			cin.get();
+		}
+		getline(cin, name);
+		if (checkString(name)) {
+			break;
+		}
+	}
+}
+
+void Employee::setName()
+{
+	int count = 1;
+	while (1) {
+		cout << "Имя: " << endl;
+		if (count == 1) {
+			cin.get();
+		}
+		getline(cin, personPosition);
+		if (checkString(personPosition)) {
+			break;
+		}
+	}
+}
+
+void Employee::setTargetRaiting1()
+{
+	int count = 1;
+	while (1) {
+		cout << "Введите оценку первой цели: " << endl;
+		if (count == 1) {
+			cin.get();
+		}
+		getline(cin, personPosition);
+	//	if (checkNumber(personPosition)) {
+	//		break;
+		}
+//	}
+}
+
+void Employee::setTargetRaiting2()
+{
+	int count = 1;
+	while (1) {
+		cout << "Введите оценку второй цели: " << endl;
+		if (count == 1) {
+			cin.get();
+		}
+		getline(cin, personPosition);
+//		if (checkNumber(personPosition)) {
+	//		break;
+		}
+//	}
+}
+
+void Employee::setTargetRaiting3()
+{
+	int count = 1;
+	while (1) {
+		cout << "Введите оценку третьей цели: " << endl;
+		if (count == 1) {
+			cin.get();
+		}
+		getline(cin, personPosition);
+		}
+}
+
+void Employee::setTargetRaiting4()
+{
+	int count = 1;
+	while (1) {
+		cout << "ВВведите оценку четвёртой цели: " << endl;
+		if (count == 1) {
+			cin.get();
+		}
+		getline(cin, personPosition);
+	}
+}
+
+void Employee::setTargetRaiting5()
+{
+	int count = 1;
+	while (1) {
+		cout << "Введите оценку пятой цели: " << endl;
+		if (count == 1) {
+			cin.get();
+		}
+		getline(cin, personPosition);
+	}
+}
+
+void Employee::setDepartmentName()
+{
+	int count = 1;
+	while (1) {
+		cout << "" << endl;
+		if (count == 1) {
+			cin.get();
+		}
+		getline(cin, personPosition);
+	}
+}
+
+void Employee::setPersonPosition()
+{
+	int count = 1;
+	while (1) {
+		cout << "Занимаемая должность: " << endl;
+		if (count == 1) {
+			cin.get();
+		}
+		getline(cin, personPosition);
+	}
+}
+
 ostream & operator<<(ostream & stream, Employee & worker)
 {
 	stream << "|" << setw(21) << worker.getFactoryName() << "|" << setw(20) << worker.getSurname() << "|" << setw(20) << worker.getName() << "|" << setw(20) << worker.getPersonPosition() << "|" << setw(20) << worker.getTargetRaiting1() << "|" << setw(20) << worker.getTargetRaiting2() << "|" << setw(20) << worker.getTargetRaiting3() << "|" << setw(21) << worker.getTargetRaiting4() << "|" << setw(20) << worker.getTargetRaiting5() << "|";
@@ -77,6 +197,13 @@ ostream & operator<<(fstream & stream, Employee & worker)
 	stream << worker.getFactoryName() << " " << worker.getSurname() << " " << worker.getName() << " " << worker.getPersonPosition() << " " << worker.getTargetRaiting1() << " " << worker.getTargetRaiting2() << " " << worker.getTargetRaiting3() << " " << worker.getTargetRaiting4() << " " << worker.getTargetRaiting5();
 	return stream;
 }
+
+ostream& operator<<(ofstream& stream, Employee& worker)
+{
+	stream << worker.getFactoryName() << " " << worker.getSurname() << " " << worker.getName() << " " << worker.getPersonPosition() << " " << worker.getTargetRaiting1() << " " << worker.getTargetRaiting2() << " " << worker.getTargetRaiting3() << " " << worker.getTargetRaiting4() << " " << worker.getTargetRaiting5();
+	return stream;
+}
+
 
 string Employee::getSurname()
 {

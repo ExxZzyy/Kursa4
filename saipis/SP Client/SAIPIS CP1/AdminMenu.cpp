@@ -5,7 +5,7 @@ vector<Employee> forFile;
 
 fstream dataBaseIsOpen;
 ofstream dataBaseIsEmpty;
-string pathFileFactory = "factory.txt";
+string pathFileFactory = "manufactory.txt";
 
 void AdminMenu::adminMenu()
 {
@@ -118,25 +118,102 @@ void AdminMenu::redact()
 		cin >> number;
 		for (auto it = forFile.begin(); it != forFile.end() - 1; it++) {
 			if (number == position + 1) {
-				Employee w;
-				cin >> w;
-				forFile.emplace(it, w);
-			//	forFile.erase(it--);
-				position--;
-				break;
+				int choice = 1;
+				while (choice != 0) {
+					cout << left << "Редактируем по" << endl;
+					cout << "1.Названию отдела" << endl;
+					cout << "2.Фамилии сотрудников" << endl;
+					cout << "3.Имени сотрудников" << endl;
+					cout << "4.Должности сотрудников" << endl;
+					cout << "5.Экспертной оценке первой цели" << endl;
+					cout << "6.Экспертной оценке второй цели" << endl;
+					cout << "7.Экспертной оценке третьей цели" << endl;
+					cout << "8.Экспертной оценке четвёртой цели" << endl;
+					cout << "9.Экспертной оценке пятой цели" << endl;
+					cout << "10.Показать изменения" << endl;					
+					cout << "0.Выход" << endl;
+					cout << ">>>" << endl;
+					cin >> choice; white;
+					switch (choice)
+					{
+					case 1: {
+						forFile[position].setDepartmentName();
+						break;
+					}
+					case 2: {
+						forFile[position].setSurname();
+						break;
+					}
+					case 3: {
+						forFile[position].setName();
+						break;
+					}
+					case 4: {
+						forFile[position].setPersonPosition();
+						break;
+					}
+					case 5: {
+						forFile[position].setTargetRaiting1();
+						break;
+					}
+					case 6: {
+						forFile[position].setTargetRaiting2();
+						break;
+					}
+					case 7: {
+						forFile[position].setTargetRaiting3();
+						break;
+					}
+					case 8: {
+						forFile[position].setTargetRaiting4();
+						break;
+					}
+					case 9: {
+						forFile[position].setTargetRaiting5();
+						break;
+					}
+					case 10: {
+						int count = 1;
+						cout << "*****************************************************************************************************************************************************************************************************" << endl;
+						cout << setw(5) << "№" << "|" << setw(21) << "Название отдела" << "|" << setw(20) << "Фамилия сотрудника" << "|" << setw(20) << "Имя сотрудника" << "|" << setw(20) << "Должность сотрудника" << "|" << setw(20) << "Оценка первой цели" << "|" << setw(20) << "Оценка второй цели" << "|" << setw(20) << "Оценка третьей цели" << "|" << setw(20) << "Оценка четвёртой цели" << "|" << setw(20) << "Оценка пятой цели" << "|" << endl;
+						cout << "*****************************************************************************************************************************************************************************************************" << endl;
+						for (auto it = forFile.begin(); it != forFile.end() - 2; it++) {
+							cout << setw(3) << count++ << ")" << *it << endl;
+							cout << "*****************************************************************************************************************************************************************************************************" << endl;
+						}
+						cout << "\n" << endl;
+						break;
+					}
+					case 11: {
+						dataBaseIsEmpty.open(pathFileFactory);
+						for (auto it = forFile.begin(); it != forFile.end() - 2; it++) {
+							dataBaseIsEmpty << *it << endl;
+						}
+						forFile.clear();
+						show(forFile);
+						dataBaseIsEmpty.close();
+						break;
+					}
+					case 0: {
+						break;
+					}
+					default:
+						break;
+					}
+				}
 			}
 			else position++;
 		}
 		if (position != forFile.size()) {
 			dataBaseIsOpen.close();
-			cout << "Данный номер удален" << endl;
+			cout << "Данный номер отредактирован!" << endl;
 			dataBaseIsEmpty.open(pathFileFactory);
 			dataBaseIsEmpty.close();
 		}
-		else throw logic_error("Такого номера не существует");
+		else throw logic_error("Такой номер не существует!");
 	}
 	else {
-		throw logic_error("Ошибка при открытии файла");
+		throw logic_error("Ошибка в открытии БД!");
 		dataBaseIsOpen.close();
 	}
 }
@@ -293,7 +370,7 @@ void UserMenu::show(vector<Employee> w)
 		cout << setw(5) << "№" << "|" << setw(21) << "Название отдела" << "|" << setw(20) << "Фамилия сотрудника" << "|" << setw(20) << "Имя сотрудника" << "|" << setw(20) << "Должность сотрудника" << "|" << setw(20) << "Оценка первой цели" << "|" << setw(20) << "Оценка второй цели" << "|" << setw(20) << "Оценка третьей цели" << "|" << setw(20) << "Оценка четвёртой цели" << "|" << setw(20) << "Оценка пятой цели" << "|" << endl;
 		cout << "*****************************************************************************************************************************************************************************************************"<< endl;
 
-		for (auto it = w.begin(); it != w.end() -1 ; it++) {
+		for (auto it = w.begin(); it != w.end() -1; it++) {
 			cout << setw(3) << count++ << ") " << *it << endl;
 			cout << "*****************************************************************************************************************************************************************************************************" << endl;
 		}
@@ -520,8 +597,8 @@ void UserMenu::sort()
 			cout << "Сортировка по:" << endl;
 			cout << "1.Названию отдела сотрудника" << endl;
 			cout << "2.Фамилии сотрудника" << endl;
-			cout << "3.Имени сотрудника" << endl;
-			cout << "4.Должности сотрудника" << endl;
+			cout << "3.Должности сотрудник" << endl;
+			cout << "4.Имени сотрудника" << endl;
 			cout << "5.Экспертной оценке первой цели" << endl;
 			cout << "6.Экспертной оценке второй цели" << endl;
 			cout << "7.Экспертной оценке третьей цели" << endl;
